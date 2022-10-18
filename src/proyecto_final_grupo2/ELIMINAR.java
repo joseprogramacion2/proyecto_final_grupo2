@@ -4,17 +4,13 @@
  */
 package proyecto_final_grupo2;
 
-/**
- *
- * @author Dell G3
- */
-public class ELIMINAR extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ELIMINAR
-     */
+public class ELIMINAR extends javax.swing.JFrame {
+    
+    
     public ELIMINAR() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -30,13 +26,13 @@ public class ELIMINAR extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtnoplaca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        txtsalida = new javax.swing.JTextField();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,26 +56,26 @@ public class ELIMINAR extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("No. Placa:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 120, -1));
+        jPanel2.add(txtnoplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 120, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "propietario", "No. Placa", "Tipo de Vehiculo", "Hora de Entrada"
+                "Propietario", "No. Placa", "Hora de Entrada", "Hora de Salida"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tabla.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                TablaAncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(Tabla);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 480, 160));
 
@@ -87,14 +83,14 @@ public class ELIMINAR extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Hora de Salida:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 110, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("ELIMINAR AUTO");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
+        jPanel2.add(txtsalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 100, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_final_grupo2/53b2ddd96c334e8cd52202670476e653 (2).jpg"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 350));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_final_grupo2/53b2ddd96c334e8cd52202670476e653 (2).jpg"))); // NOI18N
+        jPanel2.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +113,10 @@ public class ELIMINAR extends javax.swing.JFrame {
         new MENU().toFront();
         new MENU().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TablaAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TablaAncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaAncestorMoved
 
     /**
      * @param args the command line arguments
@@ -152,18 +152,19 @@ public class ELIMINAR extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable Tabla;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtnoplaca;
+    private javax.swing.JTextField txtsalida;
     // End of variables declaration//GEN-END:variables
 }

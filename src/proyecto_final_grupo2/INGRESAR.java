@@ -4,17 +4,24 @@
  */
 package proyecto_final_grupo2;
 
+import java.sql.Connection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import java.util.logging.*;
 /**
  *
  * @author Dell G3
  */
 public class INGRESAR extends javax.swing.JFrame {
 
+    conexion con = new conexion();
+    Connection cn = con.conectar();
     /**
      * Creates new form INGRESAR
      */
     public INGRESAR() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,11 +40,11 @@ public class INGRESAR extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtpropietario = new javax.swing.JTextField();
+        txtnoplaca = new javax.swing.JTextField();
+        txtentrada = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtvehiculo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,16 +84,19 @@ public class INGRESAR extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Hora de Entrada:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 190, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 190, -1));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 190, -1));
+        jPanel2.add(txtpropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 190, -1));
+        jPanel2.add(txtnoplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 190, -1));
+        jPanel2.add(txtentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 190, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("REGISTRAR VEHICULO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Motocicleta", "Automovil" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, -1));
+        jPanel2.add(txtvehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +124,21 @@ public class INGRESAR extends javax.swing.JFrame {
         new MENU().toFront();
         new MENU().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            PreparedStatement pps= cn.prepareStatement("INSERT INTO parqueo(Propietario,Placa,Tipo_Vehiculo,Hora_Entrada) VALUES(?,?,?,?)");
+            pps.setString(1, txtpropietario.getText());
+            pps.setString(2, txtnoplaca.getText());
+            pps.setString(3, txtvehiculo.getText());
+            pps.setString(4, txtentrada.getText());
+            pps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+        
+        }catch(SQLException ex) {
+            Logger.getLogger(INGRESAR.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,17 +168,14 @@ public class INGRESAR extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new INGRESAR().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new INGRESAR().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -161,8 +183,9 @@ public class INGRESAR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtentrada;
+    private javax.swing.JTextField txtnoplaca;
+    private javax.swing.JTextField txtpropietario;
+    private javax.swing.JTextField txtvehiculo;
     // End of variables declaration//GEN-END:variables
 }

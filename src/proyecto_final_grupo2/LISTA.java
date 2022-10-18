@@ -15,6 +15,7 @@ public class LISTA extends javax.swing.JFrame {
      */
     public LISTA() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -109,6 +110,15 @@ public class LISTA extends javax.swing.JFrame {
                 "Propietario", "No. Placa", "Tipo", "Hora de Entrada", "Hora de Salida"
             }
         ));
+        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jTable1AncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 480, 230));
@@ -142,6 +152,10 @@ public class LISTA extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTable1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1AncestorMoved
 
     /**
      * @param args the command line arguments
